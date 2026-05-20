@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import "./App.css";
+import App.css;
 
 function App() {
   const [jobText, setJobText] = useState("");
