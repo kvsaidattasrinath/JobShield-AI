@@ -8,6 +8,11 @@ function App() {
   const [result, setResult] = useState(null);
 
   const analyzeJob = async () => {
+    const resetFields = () => {
+  setJobText("");
+  setJobUrl("");
+  setResult(null);
+};
     try {
       const response = await axios.post(
         "https://jobshield-ai-backend.onrender.com/predict",
@@ -62,6 +67,16 @@ function App() {
       >
         Analyze Job
       </button>
+      <button
+  className="button"
+  onClick={resetFields}
+  style={{
+    marginTop: "10px",
+    background: "#334155"
+  }}
+>
+  Reset
+</button>
 
       {/* RESULT */}
       {result && (
