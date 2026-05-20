@@ -21,7 +21,7 @@ function App() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/predict",
+        "https://jobshield-ai-backend.onrender.com/",
         {
           text: jobText,
           url: jobUrl
