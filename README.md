@@ -46,17 +46,18 @@ https://job-shield-ai-olive.vercel.app
 
 ## Screenshots
 
+## Screenshots
+
 ### Home UI
-![Home UI](screenshots/home-ui.png)
+![Home UI](screenshots/Home%20UI.png)
 
 ### Fake Job Detection
-![Fake Job](screenshots/fake-job-result.png)
+![Fake Job](screenshots/Fake%20Job.png)
 
 ### Real Job Detection
-![Real Job](screenshots/real-job-result.png)
+![Real Job](screenshots/Real%20Job.png)
 
-### URL Analysis
-![URL Analysis](screenshots/url-analysis.png)
+
 
 ---
 
