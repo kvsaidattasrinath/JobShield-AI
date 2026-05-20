@@ -1,9 +1,10 @@
 import { useState } from "react";
 import axios from "axios";
-import App.css;
+import "./App.css";
 
 function App() {
   const [jobText, setJobText] = useState("");
+  const [jobUrl, setJobUrl] = useState("");
   const [result, setResult] = useState(null);
 
   const analyzeJob = async () => {
@@ -12,24 +13,41 @@ function App() {
         "https://jobshield-ai-backend.onrender.com/predict",
         {
           text: jobText,
+          url: jobUrl,
         }
       );
 
       setResult(response.data);
+
     } catch (error) {
+
       console.error(error);
+
       alert("Backend connection failed");
     }
   };
 
   return (
     <div className="container">
-      <h1 className="title">JobShield AI</h1>
+
+      <h1 className="title">
+        JobShield AI
+      </h1>
 
       <p className="subtitle">
         AI-powered fake job and scam detection system
       </p>
 
+      {/* URL INPUT */}
+      <input
+        className="textarea"
+        type="text"
+        placeholder="Paste Job URL here..."
+        value={jobUrl}
+        onChange={(e) => setJobUrl(e.target.value)}
+      />
+
+      {/* JOB DESCRIPTION */}
       <textarea
         className="textarea"
         placeholder="Paste job description here..."
@@ -37,12 +55,19 @@ function App() {
         onChange={(e) => setJobText(e.target.value)}
       />
 
-      <button className="button" onClick={analyzeJob}>
+      {/* BUTTON */}
+      <button
+        className="button"
+        onClick={analyzeJob}
+      >
         Analyze Job
       </button>
 
+      {/* RESULT */}
       {result && (
+
         <div className="result-card">
+
           <h2>
             Prediction:
             <span
@@ -62,19 +87,31 @@ function App() {
             {result.final_confidence}%
           </p>
 
+          {/* FLAGS */}
           <div className="flags">
-            {result.flags?.map((flag, index) => (
-              <div key={index} className="flag">
-                {flag}
-              </div>
-            ))}
+
+            {result.detected_flags?.map(
+              (flag, index) => (
+
+                <div
+                  key={index}
+                  className="flag"
+                >
+                  {flag}
+                </div>
+              )
+            )}
+
           </div>
 
+          {/* AI EXPLANATION */}
           <p style={{ marginTop: "20px" }}>
             {result.ai_explanation}
           </p>
+
         </div>
       )}
+
     </div>
   );
 }
