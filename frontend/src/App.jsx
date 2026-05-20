@@ -3,17 +3,16 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
+
   const [jobText, setJobText] = useState("");
   const [jobUrl, setJobUrl] = useState("");
   const [result, setResult] = useState(null);
 
+  // ANALYZE FUNCTION
   const analyzeJob = async () => {
-    const resetFields = () => {
-  setJobText("");
-  setJobUrl("");
-  setResult(null);
-};
+
     try {
+
       const response = await axios.post(
         "https://jobshield-ai-backend.onrender.com/predict",
         {
@@ -32,7 +31,16 @@ function App() {
     }
   };
 
+  // RESET FUNCTION
+  const resetFields = () => {
+
+    setJobText("");
+    setJobUrl("");
+    setResult(null);
+  };
+
   return (
+
     <div className="container">
 
       <h1 className="title">
@@ -60,23 +68,25 @@ function App() {
         onChange={(e) => setJobText(e.target.value)}
       />
 
-      {/* BUTTON */}
+      {/* ANALYZE BUTTON */}
       <button
         className="button"
         onClick={analyzeJob}
       >
         Analyze Job
       </button>
+
+      {/* RESET BUTTON */}
       <button
-  className="button"
-  onClick={resetFields}
-  style={{
-    marginTop: "10px",
-    background: "#334155"
-  }}
->
-  Reset
-</button>
+        className="button"
+        onClick={resetFields}
+        style={{
+          marginTop: "10px",
+          background: "#334155"
+        }}
+      >
+        Reset
+      </button>
 
       {/* RESULT */}
       {result && (
