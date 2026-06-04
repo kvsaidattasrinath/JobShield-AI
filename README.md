@@ -46,7 +46,6 @@ https://job-shield-ai-olive.vercel.app
 
 ## Screenshots
 
-## Screenshots
 
 ### Home UI
 ![Home UI](screenshots/Home%20UI.png)
